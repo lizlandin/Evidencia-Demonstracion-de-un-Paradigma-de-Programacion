@@ -96,6 +96,8 @@ Estos son los caminos que probaremos en el archivo "find_path_tests.rkt" :
 Según Cormen et al. (2009) en e libro "Introduction to Algorithms", al analizar la complejidad de algoritmos sobre grafos, el tamaño de la entrada normalmente se mide utilizando dos parámetros: el número de vértices (V) y el número de aristas o conexiones (E) presentes en el grafo. Por esta razón, la complejidad de este tipo de algoritmos suele expresarse utilizando ambas cantidades dentro de la notación asintótica. 
 Por ejemplo, una complejidad O(VE) indica que el tiempo de ejecución depende tanto de la cantidad de nodos como de la cantidad de conexiones existentes dentro del grafo y en la implementación que se realizó, la complejidad temporal es justamente esa misma,O(VE), ya que por cada nodo visitado durante el recorrido DFS se recorre nuevamente la lista completa de conexiones para encontrar a sus vecinos.
 
+Por otro lado la complejidad espacial de la solución sería O(V), donde "V" representa el número de vértices que tiene el grafo. Esto se debe a que el algoritmo necesita almacenar en memoria los nodos que ya fueron visitados para evitar ciclos infinitos durante el recorrido y al tratarse de una implementación recursiva de DFS, en el peor de los casos la profundidad de las llamadas recursivas puede llegar a ser equivalente al número total de nodos que hay en el grafo en otras palabras "V".
+
 
 
 **Paradigma Lógico - Prolog
