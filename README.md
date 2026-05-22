@@ -59,7 +59,6 @@ De esta manera se elaboró la solución en Racket y el código completo se encue
 ### Logic - Prolog
 
 
-## Comparación de propuestas de solución
 
 ## IMPLEMENTACIÓN
 
@@ -78,10 +77,32 @@ Para ejecutar el programa se deben seguir las siguientes instrucciones:
 
 
 ## PRUEBAS 
+
+**Pruebas en Racket - Paradigma Funcional**
+
+Estos son los caminos que probaremos en el archivo "find_path_tests.rkt" :
+
 <img width="630" height="image" alt="image" src="https://github.com/user-attachments/assets/13f9c4b1-2795-4388-9330-dab6e642fa9d" />
 
 
+**Pruebas en Prolog - Paradigma Lógico**
+
+
 ## ANÁLISIS
+### Complejidad espacial y temporal
+
+**Paradigma Funcional - Racket**
+
+Según Cormen et al. (2009) en e libro "Introduction to Algorithms", al analizar la complejidad de algoritmos sobre grafos, el tamaño de la entrada normalmente se mide utilizando dos parámetros: el número de vértices (V) y el número de aristas o conexiones (E) presentes en el grafo. Por esta razón, la complejidad de este tipo de algoritmos suele expresarse utilizando ambas cantidades dentro de la notación asintótica. 
+Por ejemplo, una complejidad O(VE) indica que el tiempo de ejecución depende tanto de la cantidad de nodos como de la cantidad de conexiones existentes dentro del grafo y en la implementación que se realizó, la complejidad temporal es justamente esa misma,O(VE), ya que por cada nodo visitado durante el recorrido DFS se recorre nuevamente la lista completa de conexiones para encontrar a sus vecinos.
+
+
+
+**Paradigma Lógico - Prolog
+
+
+### Comparación de propuestas de solución
+
 
 ## REFERENCIAS 
 - Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to algorithms (3rd ed.). MIT Press.
