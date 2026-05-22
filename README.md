@@ -80,9 +80,13 @@ Para ejecutar el programa se deben seguir las siguientes instrucciones:
 
 **Pruebas en Racket - Paradigma Funcional**
 
+Debido a que LeetCode no permite visualizar todos los casos de prueba que se utilizan para validar un problema, únicamente se utilizarán como referencia los test cases que la plataforma si permite consultar, sin embargo, aunque no todos los casos de prueba son visibles, la implementación logró pasar correctamente la validación completa de la plataforma, obteniendo un resultado de "35/35 testcases passed", como se muestra en la siguiente evidencia.
+
+<img width="700" height="image" alt="image" src="https://github.com/user-attachments/assets/cd34c1f8-255d-4b53-b838-0be24ad2375a" />
+
 Estos son los caminos que probaremos en el archivo "find_path_tests.rkt" :
 
-<img width="630" height="image" alt="image" src="https://github.com/user-attachments/assets/13f9c4b1-2795-4388-9330-dab6e642fa9d" />
+<img width="700" height="image" alt="image" src="https://github.com/user-attachments/assets/267f2378-fa54-46a3-bd44-9b0a22a394c8" />
 
 
 **Pruebas en Prolog - Paradigma Lógico**
