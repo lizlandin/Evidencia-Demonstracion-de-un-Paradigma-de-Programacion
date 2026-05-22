@@ -33,16 +33,56 @@ La primera solución para este problema será implementada en el entorno de desa
 El **paradigma funcional** tiene como objetivo aproximarse lo más posible al comportamiento de las funciones matemáticas. A diferencia de los lenguajes imperativos, donde el programa constantemente modifica variables y estados en memoria mediante asignaciones, la programación funcional busca minimizar este tipo de cambios y centrarse principalmente en la evaluación de funciones. En un lenguaje puramente funcional, las variables no se actualizan continuamente durante la ejecución del programa, sino que las funciones reciben datos de entrada y producen resultados sin alterar el estado general del sistema. En este paradigma, la repetición normalmente se implementa mediante recursión en lugar de ciclos iterativos, y una función debe producir siempre el mismo resultado cuando recibe los mismos parámetros, característica conocida como **referential transparency**. 
 Este paradigma constituye una de las bases más importantes de los estilos de programación no imperativos y es un enfoque ganó gran relevancia gracias a las ideas propuestas por John Backus en su conferencia del Premio Turing de 1977, donde argumentó que los lenguajes puramente funcionales podían producir programas más legibles, confiables y con mayores probabilidades de ser correctos en comparación con los lenguajes imperativos (Sebesta, 2012).
 
+La solución en Racket se hizo mediante varias funciones pequeñas que se encargaban de tareas específicas dentro del recorrido DFS. 
+
+La función principal, **valid-path**, recibe los parámetros proporcionados por el problema de acuerdo a leetcode e inicia la búsqueda llamando a **find-path**, la cual implementa la lógica principal del algoritmo DFS de manera recursiva.
+
+***Función valid-path:***
+
+<img width="450" height="image" alt="image" src="https://github.com/user-attachments/assets/c835aba9-15c5-47ad-96a5-41a9fc485a37" />
 
 
+***Función find-path:***
 
+<img width="600" height="image" alt="image" src="https://github.com/user-attachments/assets/eecd8f86-947c-4701-80b1-9b9cda2334fb" />
+
+Dentro de la implementación también se utilizaron listas para representar las conexiones entre los nodos del grafo, así como funciones características de Racket y de la programación funcional, como **first, rest, cons y cond**. 
+
+La estructura **cond** permite evaluar diferentes casos dentro del algoritmo, mientras que **cons** se utiliza para construir nuevas listas agregando elementos al inicio de ellas.
+
+Una de las características principales de la solución mediante programación funcional es el uso de recursión en lugar de los ciclos iterativos tradicionales, por lo cual la función **find-path** explora recursivamente los vecinos de cada nodo hasta encontrar el destino o agotar todos los caminos posibles. 
+
+Para evitar ciclos infinitos, el programa mantiene una lista de nodos visitados mediante la función **visited?**, mientras que **neighbors** obtiene los nodos conectados al nodo actual y **check-neighbors** va a revisar recursivamente si alguno de ellos puede llegar al destino final.
+
+De esta manera se elaboró la solución en Racket y el código completo se encuentra en el archivo **"find_path.rkt"**.
 
 ### Logic - Prolog
+
+
 ## Comparación de propuestas de solución
 
 ## IMPLEMENTACIÓN
+
+**Implementación en Racket - Paradigma Funcional**
+
+Para ejecutar el programa se deben seguir las siguientes instrucciones:
+
+  1. Primero se necesita tener instalado DrRacket, lo cual se puede hacer desde la página oficial de Racket.
+  2. Guardar ambos archivos del proyecto (find_path.rkt y find_path_tests.rkt) dentro de la misma carpeta.
+  3. Abrir el archivo find_path_tests.rkt en DrRacket.
+  4. **Verificar que el archivo principal find_path.rkt SI contenga la línea (provide valid-path) para permitir que las pruebas puedan utilizar la función principal.**
+  5. Ejecutar el programa presionando el botón Run dentro de DrRacket.
+  6. Los resultados de las pruebas aparecerán en la consola inferior de DrRacket mostrando #true o #false dependiendo de si existe un camino válido entre los nodos indicados en cada caso de prueba.
+
+**Implementación en Prolog - Paradigma Lógico**
+
+
 ## PRUEBAS 
+<img width="630" height="image" alt="image" src="https://github.com/user-attachments/assets/13f9c4b1-2795-4388-9330-dab6e642fa9d" />
+
+
 ## ANÁLISIS
+
 ## REFERENCIAS 
 - Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to algorithms (3rd ed.). MIT Press.
 - Sebesta, R. W. (2012). Concepts of programming languages (10th ed.). Pearson.
