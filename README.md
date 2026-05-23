@@ -47,7 +47,7 @@ Una vez construido el grafo, el programa crea un vector llamado visited, el cual
 
 La función **check-neighbors** es la que se encarga de revisar recursivamente la lista de vecinos del nodo actual, si alguno de ellos logra llegar al destino, la función regresa #true y en caso de que no continúa explorando el resto de vecinos hasta haber revisado todos.
 
-Dentro de la implementación también utilicé funciones características de Racket como **first, rest, cons y cond** y algunas nuevas que no vi directamente en clase como **make-vector, vector-ref, vector-set!, for-each** pero que se utilizaban para realizar la solución de manera más eficiente. 
+Dentro de la implementación también utilicé funciones características de Racket como **first, rest, cons y cond** y algunas nuevas que no vi directamente en clase como **make-vector, vector-ref, vector-set!, for-each** pero que se utilizaban para realizar la solución con una menor complejidad y así fuera aceptada por LeetCode.
 
 Los vectores son los que permitieron almacenar de manera eficiente tanto la lista de adyacencia como los nodos visitados, mientras que funciones como first, rest, cons facilitaron el manejo de listas dentro del programa y cond es lo que permitio evaluar diferentes casos dentro del algoritmo, como el equivalente de if de los lenguajes imperativos que normalmente usamos.
 
