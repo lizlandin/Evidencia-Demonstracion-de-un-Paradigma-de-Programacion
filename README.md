@@ -37,28 +37,23 @@ La primera solución para este problema será implementada usando estos concepto
 El **paradigma funcional** tiene como objetivo aproximarse lo más posible al comportamiento de las funciones matemáticas. A diferencia de los lenguajes imperativos, donde el programa constantemente modifica variables y estados en memoria mediante asignaciones, la programación funcional busca minimizar este tipo de cambios y centrarse principalmente en la evaluación de funciones. En un lenguaje puramente funcional, las variables no se actualizan continuamente durante la ejecución del programa, sino que las funciones reciben datos de entrada y producen resultados sin alterar el estado general del sistema. En este paradigma, la repetición normalmente se implementa mediante recursión en lugar de ciclos iterativos, y una función debe producir siempre el mismo resultado cuando recibe los mismos parámetros, característica conocida como **referential transparency**. 
 Este paradigma constituye una de las bases más importantes de los estilos de programación no imperativos y es un enfoque ganó gran relevancia gracias a las ideas propuestas por John Backus en su conferencia del Premio Turing de 1977, donde argumentó que los lenguajes puramente funcionales podían producir programas más legibles, confiables y con mayores probabilidades de ser correctos en comparación con los lenguajes imperativos (Sebesta, 2012).
 
-La solución en Racket se hizo mediante varias funciones pequeñas que se encargaban de tareas específicas dentro del recorrido DFS. 
+La solución en Racket se desarrolló utilizando varias funciones pequeñas que se encargan de tareas específicas dentro del recorrido DFS. Para representar el grafo se utilizó una estructura conocida como lista de adyacencia,la cual se explico anteriormente, donde cada nodo almacena directamente una lista con sus vecinos o nodos conectados lo cual nos permite acceder a las conexiones del grafo de manera más eficiente durante la búsqueda.
 
-La función principal, **valid-path**, recibe los parámetros proporcionados por el problema de acuerdo a leetcode e inicia la búsqueda llamando a **find-path**, la cual implementa la lógica principal del algoritmo DFS de manera recursiva.
+La función principal, **valid-path**, recibe los parámetros proporcionados por LeetCode: el número de nodos, la lista de conexiones, el nodo inicial y el nodo destino y dentro de esta función se crea un vector llamado graph, donde cada posición representa un nodo del grafo y contiene una lista con sus vecinos.
 
-***Función valid-path:***
+Para construir la lista de adyacencia se utiliza la función **add-edge**, la cual recibe una conexión entre dos nodos y la agrega dentro del vector del grafo, debido a que el problema trabaja con un grafo no dirigido, cada conexión se almacena en ambos sentidos, eso quiere decir que si existe una conexión entre los nodos u y v, entonces v aparece como vecino de u y u aparece como vecino de v.
 
-<img width="450" height="image" alt="image" src="https://github.com/user-attachments/assets/c835aba9-15c5-47ad-96a5-41a9fc485a37" />
+Una vez construido el grafo, el programa crea un vector llamado visited, el cual se utiliza para registrar los nodos que ya fueron visitados durante el recorrido y evitar ciclos infinitos,posteriormente, la función **find-path** implementa la lógica principal del algoritmo DFS de manera recursiva, esta función revisa si el nodo actual corresponde al destino, si ya fue visitado anteriormente o si debe continuar explorando sus vecinos.
 
+La función **check-neighbors** es la que se encarga de revisar recursivamente la lista de vecinos del nodo actual, si alguno de ellos logra llegar al destino, la función regresa #true y en caso de que no continúa explorando el resto de vecinos hasta haber revisado todos.
 
-***Función find-path:***
+Dentro de la implementación también utilicé funciones características de Racket como **first, rest, cons y cond** y algunas nuevas que no vi directamente en clase como **make-vector, vector-ref, vector-set!, for-each** pero que se utilizaban para realizar la solución de manera más eficiente. 
 
-<img width="600" height="image" alt="image" src="https://github.com/user-attachments/assets/eecd8f86-947c-4701-80b1-9b9cda2334fb" />
+Los vectores son los que permitieron almacenar de manera eficiente tanto la lista de adyacencia como los nodos visitados, mientras que funciones como first, rest, cons facilitaron el manejo de listas dentro del programa y cond es lo que permitio evaluar diferentes casos dentro del algoritmo, como el equivalente de if de los lenguajes imperativos que normalmente usamos.
 
-Dentro de la implementación también se utilizaron listas para representar las conexiones entre los nodos del grafo, así como funciones características de Racket y de la programación funcional, como **first, rest, cons y cond**. 
+Una de las características principales de la solución funcional es el uso de recursión en lugar de ciclos iterativos, por lo que la exploración del grafo se realiza mediante llamadas recursivas hasta encontrar el destino o determinar que no existe un camino válido entre los nodos indicados.
 
-La estructura **cond** permite evaluar diferentes casos dentro del algoritmo, mientras que **cons** se utiliza para construir nuevas listas agregando elementos al inicio de ellas.
-
-Una de las características principales de la solución mediante programación funcional es el uso de recursión en lugar de los ciclos iterativos tradicionales, por lo cual la función **find-path** explora recursivamente los vecinos de cada nodo hasta encontrar el destino o agotar todos los caminos posibles. 
-
-Para evitar ciclos infinitos, el programa mantiene una lista de nodos visitados mediante la función **visited?**, mientras que **neighbors** obtiene los nodos conectados al nodo actual y **check-neighbors** va a revisar recursivamente si alguno de ellos puede llegar al destino final.
-
-De esta manera se elaboró la solución en Racket y el código completo se encuentra en el archivo **"find_path.rkt"**.
+De esta manera se elaboró la solución en Racket y el código completo se encuentra en el archivo "find_path.rkt".
 
 ### Logic - Prolog
 
@@ -117,5 +112,6 @@ Por otro lado la complejidad espacial de la solución sería *O(V)*, donde *"V"*
 ## REFERENCIAS 
 - Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to algorithms (3rd ed.). MIT Press.
 - Sebesta, R. W. (2012). Concepts of programming languages (10th ed.). Pearson.
+- 4.12 vectors. (n.d.). https://docs.racket-lang.org/reference/vectors.html
 
 
