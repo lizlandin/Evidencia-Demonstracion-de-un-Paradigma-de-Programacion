@@ -23,7 +23,6 @@ De esta manera, el problema no solo es útil para practicar algoritmos de búsqu
 
 ### Functional - Racket 
 
-
 Para poder resolver este problema es necesario recorrer los grafos que se van a proporcionan en el input para después explorar las conexiones entre sus nodos hasta determinar si existe un camino válido entre el nodo inicial y el nodo destino y para lograr esto voy a utilizar un algoritmo conocido como Depth-First Search (DFS) con listas de adyacencia.
 
 De acuerdo con el libro Introduction to Algorithms de Cormen et al. (2009), el algoritmo Depth-First Search (DFS) sigue una estrategia de exploración en profundidad, intentando avanzar lo más posible a través de un camino antes de regresar y explorar otras alternativas. El algoritmo revisa primero las conexiones de los nodos descubiertos más recientemente y, cuando ya no existen caminos nuevos por explorar, realiza un proceso de backtracking para regresar a nodos anteriores y continuar la búsqueda desde ellos. Este procedimiento se repite hasta recorrer todos los nodos alcanzables dentro del grafo. 
@@ -34,7 +33,7 @@ En otras palabras, cada lista almacena todos los vecinos de un nodo determinado,
 
 La primera solución para este problema será implementada usando estos conceptos en el entorno de desarrollo DrRacket utilizando el lenguaje Racket, el cual es un lenguaje derivado de Scheme, que se caracteriza por trabajar bajo el paradigma funcional.
 
-El **paradigma funcional** tiene como objetivo aproximarse lo más posible al comportamiento de las funciones matemáticas. A diferencia de los lenguajes imperativos, donde el programa constantemente modifica variables y estados en memoria mediante asignaciones, la programación funcional busca minimizar este tipo de cambios y centrarse principalmente en la evaluación de funciones. En un lenguaje puramente funcional, las variables no se actualizan continuamente durante la ejecución del programa, sino que las funciones reciben datos de entrada y producen resultados sin alterar el estado general del sistema. En este paradigma, la repetición normalmente se implementa mediante recursión en lugar de ciclos iterativos, y una función debe producir siempre el mismo resultado cuando recibe los mismos parámetros, característica conocida como **referential transparency**. 
+El **paradigma funcional** tiene como objetivo aproximarse lo más posible al comportamiento de las funciones matemáticas, a diferencia de los lenguajes imperativos, donde el programa constantemente modifica variables y estados en memoria mediante asignaciones, la programación funcional busca minimizar este tipo de cambios y centrarse principalmente en la evaluación de funciones. En un lenguaje puramente funcional, las variables no se actualizan continuamente durante la ejecución del programa, sino que las funciones reciben datos de entrada y producen resultados sin alterar el estado general del sistema. En este paradigma, la repetición normalmente se implementa mediante recursión en lugar de ciclos iterativos, y una función debe producir siempre el mismo resultado cuando recibe los mismos parámetros, característica conocida como **referential transparency**. 
 Este paradigma constituye una de las bases más importantes de los estilos de programación no imperativos y es un enfoque ganó gran relevancia gracias a las ideas propuestas por John Backus en su conferencia del Premio Turing de 1977, donde argumentó que los lenguajes puramente funcionales podían producir programas más legibles, confiables y con mayores probabilidades de ser correctos en comparación con los lenguajes imperativos (Sebesta, 2012).
 
 La solución en Racket se desarrolló utilizando varias funciones pequeñas que se encargan de tareas específicas dentro del recorrido DFS. Para representar el grafo se utilizó una estructura conocida como lista de adyacencia,la cual se explico anteriormente, donde cada nodo almacena directamente una lista con sus vecinos o nodos conectados lo cual nos permite acceder a las conexiones del grafo de manera más eficiente durante la búsqueda.
@@ -56,6 +55,10 @@ Una de las características principales de la solución funcional es el uso de r
 De esta manera se elaboró la solución en Racket y el código completo se encuentra en el archivo "find_path.rkt".
 
 ### Logic - Prolog
+
+El paradigma lógico surgió a partir de investigaciones relacionadas con la demostración automática de teoremas. Inicialmente, los programas de demostración de teoremas eran muy lentos debido a que exploraban exhaustivamente todas las posibles pruebas, sin embargo, durante la década de 1960, gracias al desarrollo del algoritmo de unificación y el principio de resolución, este tipo de búsquedas lógicas se hiceron más eficientes.
+Pero el paradigma se terminó de consolidar a inicios de los setenta cuando se unieron dos trabajos clave, por un lado, Alain Colmerauer desarrolló el lenguaje Prolog para procesar reglas del lenguaje humano y por el otro, Robert Kowalski descubrió que ejecutar los programas de Prolog era lo mismo que demostrar teoremas usando cláusulas de Horn, las cuales son instrucciones lógicas simples con una sola conclusión (del tipo "si ocurre A y B, entonces ocurre C"), y fue la unión de estas dos ideas lo que dio origen a la programación lógica tal como la conocemos (Abelson & Sussman, 1996).
+
 
 
 
@@ -106,12 +109,17 @@ Por otro lado, tenemos la complejidad espacial la cual también resulta ser O(V 
 **Paradigma Lógico - Prolog**
 
 
+
+
+
 ### Comparación de propuestas de solución
 
 
 ## REFERENCIAS 
 - Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to algorithms (3rd ed.). MIT Press.
 - Sebesta, R. W. (2012). Concepts of programming languages (10th ed.). Pearson.
+- Abelson, H., & Sussman, G. J. (1996). Structure and Interpretation of Computer Programs (2nd ed.). MIT Press.
+- Sterling, L., & Shapiro, E. (1994). The Art of Prolog: Advanced Programming Techniques (2nd ed.). MIT Press.
 - 4.12 vectors. (n.d.). https://docs.racket-lang.org/reference/vectors.html
 
 
