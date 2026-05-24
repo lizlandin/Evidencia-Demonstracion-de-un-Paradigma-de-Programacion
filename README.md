@@ -84,7 +84,7 @@ Para poder correr el programa en Prolog siga las siguientes instrucciones:
 3. Abrir SWI-Prolog o ejecutarlo desde la terminal.
 4. Cargar el archivo de pruebas escribiendo en la terminal: ['find_path_tests.pl'].
    - Si el archivo se carga correctamente, Prolog mostrará  *'true'*.
-5. Verificar que el archivo de pruebas si contenga la línea *" :- consult('find_path.pl'). "* ya que esto es lo que va a permitir que las pruebas puedan utilizar la función principal valid_path.
+5. **Verificar que el archivo de pruebas si contenga la línea *" :- consult('find_path.pl'). "* ya que esto es lo que va a permitir que las pruebas puedan utilizar la función principal valid_path.**
 6. Ejecutar las pruebas escribiendo en la terminal: run_path_tests.
 7. En la consola deberá mostrarse el output correspondiente a cada caso de prueba junto con su resultado, ya sea True o False, dependiendo de si se logro encontrar o no un camino válido entre los nodos indicados.
 
@@ -109,6 +109,8 @@ En cuanto a las pruebas de la implementación en Prolog se utilizaron inicialmen
 Al investigar posibles formas de optimizar la solución, comenzaron a aparecer predicados y técnicas más avanzadas propias de Prolog como aggregate, assert, retract, límites de profundidad y manejo de estado global utilizando nb_getval/nb_setval, pero, además de que no comprendía completamente como funcionaban esas herramientas, la implementación ya se alejaba bastante de la solución realizada previamente en Racket, dificultando así la comparación entre ambos paradigmas, debido a que el código ya involucraba conceptos y mecanismos muy distintos.
 
 Por esto, se decidió conservar una implementación más cercana conceptualmente a la desarrollada en Racket y para compensar por el tercer testcase de LeetCode que no funcionaba bien se complemento agregando 14 casos adicionales, los cuales fueron generados con ayuda de la inteligencia artificial ChatGPT (OpenAI). Estas pruebas fueron diseñadas para "incrementar progresivamente la dificultad de los grafos, incluyendo ciclos, múltiples rutas, componentes separados y tamaños cada vez mayores", llegando finalmente hasta grafos de 100 nodos, esto con el objetivo de probar que el código si funcionaba con grafos de distinto tamaño y complejidad.
+
+Estos son los caminos que probaremos en el archivo "find_path_tests.pl" :
 
 <img width="700" height="image" alt="image" src="https://github.com/user-attachments/assets/74321a6e-48e0-4202-ab6a-6b50b64dadd5" />
 
