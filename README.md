@@ -77,6 +77,17 @@ Para ejecutar el programa se deben seguir las siguientes instrucciones:
 
 **Implementación en Prolog - Paradigma Lógico**
 
+Para poder correr el programa en Prolog siga las siguientes instrucciones:
+
+1. Primero se necesita tener instalado SWI-Prolog, de no tenerlo se puede descargar desde la página oficial de SWI-Prolog.
+2. Guardar ambos archivos del proyecto, *"find_path.pl"* y *"find_path_tests.pl"*, dentro de la misma carpeta.
+3. Abrir SWI-Prolog o ejecutarlo desde la terminal.
+4. Cargar el archivo de pruebas escribiendo en la terminal: ['find_path_tests.pl'].
+   - Si el archivo se carga correctamente, Prolog mostrará  *'true'*.
+5. Verificar que el archivo de pruebas si contenga la línea *" :- consult('find_path.pl'). "* ya que esto es lo que va a permitir que las pruebas puedan utilizar la función principal valid_path.
+6. Ejecutar las pruebas escribiendo en la terminal: run_path_tests.
+7. En la consola deberá mostrarse el output correspondiente a cada caso de prueba junto con su resultado, ya sea True o False, dependiendo de si se logro encontrar o no un camino válido entre los nodos indicados.
+
 
 ## PRUEBAS 
 
