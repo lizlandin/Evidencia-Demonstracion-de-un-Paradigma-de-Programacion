@@ -104,6 +104,8 @@ Estos son los caminos que probaremos en el archivo "find_path_tests.rkt" :
 
 **Pruebas en Prolog - Paradigma Lógico**
 
+<img width="700" height="image" alt="image" src="https://github.com/user-attachments/assets/74321a6e-48e0-4202-ab6a-6b50b64dadd5" />
+
 
 ## ANÁLISIS
 ### Complejidad espacial y temporal
