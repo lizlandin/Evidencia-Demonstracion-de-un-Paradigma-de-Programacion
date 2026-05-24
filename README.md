@@ -129,9 +129,9 @@ Por otro lado, tenemos la complejidad espacial la cual también resulta ser O(V 
 
 **Paradigma Lógico - Prolog**
 
+En cuanto a la solución de Prolog, la complejidad temporal en el peor caso es aproximadamente ***O(VE)***, donde (V) representa el número de nodos y (E) el número de conexiones del grafo como se explicó anteriormente con la referencia del libro "Introduction to Algorithms". Esto se debe a que, a diferencia de la implementación de Racket no utilicé la lista de adyacencia, por lo cual al utilizar solo el algoritmo DFS este puede visitar hasta todos los nodos del grafo O(V), además, para buscar los vecinos de cada nodo se utiliza "member" sobre la lista completa de conexiones, por lo que cada búsqueda puede recorrer hasta todas las aristas del grafo. Debido a esto, el costo de la búsqueda de vecinos puede ser O(E) por cada nodo visitado, dando como resultado una complejidad de O(VE) en el peor caso.
 
-
-
+La complejidad espacial es ***O(V)***, ya que el programa solo va a almacenar la lista de nodos visitados y las llamadas recursivas generadas durante el recorrido DFS, y en el peor caso estas dos cosas pueden crecer hasta el número total de nodos que existan en el grafo.
 
 ### Comparación de propuestas de solución
 
