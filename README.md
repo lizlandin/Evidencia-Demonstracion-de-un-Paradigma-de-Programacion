@@ -93,7 +93,7 @@ Para poder correr el programa en Prolog siga las siguientes instrucciones:
 
 **Pruebas en Racket - Paradigma Funcional**
 
-Debido a que LeetCode no permite visualizar todos los casos de prueba que se utilizan para validar un problema, únicamente se utilizarán como referencia los test cases que la plataforma si permite consultar, sin embargo, aunque no todos los casos de prueba son visibles, la implementación logró pasar correctamente la validación completa de la plataforma, obteniendo un resultado de "35/35 testcases passed", como se muestra en la siguiente evidencia.
+Si escogiamos un problema de programación competitiva se nos solicitó que ocuparamos los casos de prueba qe la misma plataforma utilizaba para aceptar nuestra solución pero, debido a que LeetCode no permite visualizar todos los casos de prueba que se utilizan para validar un problema, únicamente se utilizarán como referencia los test cases que la plataforma si dejaba consultar, sin embargo, aunque no todos los casos de prueba son visibles, la implementación logró pasar correctamente la validación completa de la plataforma, obteniendo un resultado de "35/35 testcases passed", como se muestra en la siguiente evidencia.
 
 <img width="700" height="image" alt="image" src="https://github.com/user-attachments/assets/cd34c1f8-255d-4b53-b838-0be24ad2375a" />
 
@@ -103,6 +103,12 @@ Estos son los caminos que probaremos en el archivo "find_path_tests.rkt" :
 
 
 **Pruebas en Prolog - Paradigma Lógico**
+
+En cuanto a las pruebas de la implementación en Prolog se utilizaron inicialmente los mismos casos de prueba proporcionados por LeetCode y que utilicé anteriormente en la solución de Racket, con el objetivo de mantener consistencia entre ambas implementaciones y comprobar que ambas soluciones produjeran los mismos resultados esperados, sin embargo, al ejecutar el caso de prueba más grande de LeetCode, el cual era un grafo de 100 nodos, se observó que la implementación no funcionaba de manera particularmente eficiente y el tiempo de ejecución aumentaba considerablemente debido al backtracking de Prolog y a la gran cantidad de posibles caminos dentro del grafo.
+
+Al investigar posibles formas de optimizar la solución, comenzaron a aparecer predicados y técnicas más avanzadas propias de Prolog como aggregate, assert, retract, límites de profundidad y manejo de estado global utilizando nb_getval/nb_setval, pero, además de que no comprendía completamente como funcionaban esas herramientas, la implementación ya se alejaba bastante de la solución realizada previamente en Racket, dificultando así la comparación entre ambos paradigmas, debido a que el código ya involucraba conceptos y mecanismos muy distintos.
+
+Por esto, se decidió conservar una implementación más cercana conceptualmente a la desarrollada en Racket y para compensar por el tercer testcase de LeetCode que no funcionaba bien se complemento agregando 14 casos adicionales, los cuales fueron generados con ayuda de la inteligencia artificial ChatGPT (OpenAI). Estas pruebas fueron diseñadas para "incrementar progresivamente la dificultad de los grafos, incluyendo ciclos, múltiples rutas, componentes separados y tamaños cada vez mayores", llegando finalmente hasta grafos de 100 nodos, esto con el objetivo de probar que el código si funcionaba con grafos de distinto tamaño y complejidad.
 
 <img width="700" height="image" alt="image" src="https://github.com/user-attachments/assets/74321a6e-48e0-4202-ab6a-6b50b64dadd5" />
 
