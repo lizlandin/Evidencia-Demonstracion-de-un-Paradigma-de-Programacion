@@ -59,6 +59,22 @@ De esta manera se elaboró la solución en Racket y el código completo se encue
 El paradigma lógico surgió a partir de investigaciones relacionadas con la demostración automática de teoremas. Inicialmente, los programas de demostración de teoremas eran muy lentos debido a que exploraban exhaustivamente todas las posibles pruebas, sin embargo, durante la década de 1960, gracias al desarrollo del algoritmo de unificación y el principio de resolución, este tipo de búsquedas lógicas se hiceron más eficientes.
 Pero el paradigma se terminó de consolidar a inicios de los setenta cuando se unieron dos trabajos clave, por un lado, Alain Colmerauer desarrolló el lenguaje Prolog para procesar reglas del lenguaje humano y por el otro, Robert Kowalski descubrió que ejecutar los programas de Prolog era lo mismo que demostrar teoremas usando cláusulas de Horn, las cuales son instrucciones lógicas simples con una sola conclusión (del tipo "si ocurre A y B, entonces ocurre C"), y fue la unión de estas dos ideas lo que dio origen a la programación lógica tal como la conocemos (Abelson & Sussman, 1996).
 
+Para explicar cómo funciona la programación lógica se utilizará como referencia el libro "The Art of Prolog". De acuerdo con este libro, un programa lógico es un conjunto de reglas y relaciones entre objetos, donde la ejecución del programa consiste en deducir consecuencias lógicas a partir de esas reglas, por lo que el significado del programa depende de las conclusiones que pueden obtenerse de él, asimismo, este paradigma utiliza construcciones heredadas de la lógica formal, donde las principales estructuras son hechos, reglas y consultas, mientras que la estructura básica de datos utilizada son los términos lógicos (Sterling & Shapiro, 1994).
+
+- **Hechos:** los hechos permiten expresar que una relación existe entre ciertos objetos.
+  - Por ejemplo, una expresión como father(abraham, isaac). indica que la relación father se cumple entre Abraham e Isaac. En programación lógica, a este tipo de relaciones también se les conoce como predicados, mientras que los nombres utilizados para representar individuos específicos se conocen como átomos.
+- **Consultas o query:** las consultas se utilizan para recuperar información del programa lógico y permiten preguntar si una relación determinada es verdadera.
+  - Por ejemplo, una consulta como father(abraham, isaac)? pregunta si la relación father realmente se cumple entre Abraham e Isaac. Aunque sintácticamente los hechos y las consultas son similares, normalmente se distinguen porque los hechos terminan con un punto y las consultas con un signo de interrogación.
+- **Variables:** las variables en programación lógica funcionan de manera distinta a las variables utilizadas en lenguajes imperativos, ya que en lugar de representar una posición de memoria cuyo valor puede modificarse constantemente, una variable en Prolog normalmente comienza como  desconocida y el programa intenta encontrar un valor que permita satisfacer las reglas y relaciones lógicas definidas dentro del programa
+
+Ahora que ya se entiende un poco mejor la sintaxis que se usa en la programación lógica, se pueden explicar algunos de los conceptos más importantes que permiten el funcionamiento del código que se desarrolló en Prolog, como la unificación, las listas, la recursión y el backtracking, los cuaales son fundamentales dentro de la implementación, ya que son los que permiten explorar el grafo y encontrar un posible camino entre los nodos indicados.
+
+- **Unificación (unification) :** es considerada como una de las bases principales de la programación lógica y consiste en hacer que dos expresiones se vuelvan iguales encontrando valores para las variables que permitan que ambas coincidan correctamente. Cuando dos términos pueden hacerse idénticos mediante este proceso, se dice que unifican. Este mecanismo es fundamental en Prolog, ya que es el que permite que el programa compare patrones, relacione variables y determine si una regla o consulta puede cumplirse correctamente.
+  - Por ejemplo, dentro del código se utiliza "member([NodeA, NodeB], Edges)" y supongamos que dentro de la lista Edges existe la conexión [3,7], aquí Prolog intentará comparar esa conexión con [NodeA, NodeB]:
+    - member([NodeA, NodeB], Edges) = member([3, 7], Edges)
+
+
+    
 
 
 
