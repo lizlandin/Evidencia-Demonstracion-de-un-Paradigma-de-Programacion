@@ -71,12 +71,19 @@ Ahora que ya se entiende un poco mejor la sintaxis que se usa en la programació
 
 - **Unificación (unification) :** es considerada como una de las bases principales de la programación lógica y consiste en hacer que dos expresiones se vuelvan iguales encontrando valores para las variables que permitan que ambas coincidan correctamente. Cuando dos términos pueden hacerse idénticos mediante este proceso, se dice que unifican. Este mecanismo es fundamental en Prolog, ya que es el que permite que el programa compare patrones, relacione variables y determine si una regla o consulta puede cumplirse correctamente.
   - Por ejemplo, dentro del código se utiliza "member([NodeA, NodeB], Edges)" y supongamos que dentro de la lista Edges existe la conexión [3,7], aquí Prolog intentará comparar esa conexión con [NodeA, NodeB]:
-    - member([NodeA, NodeB], Edges) = member([3, 7], Edges)
+    - member([NodeA, NodeB], Edges) = member([3,7], Edges)
+- **Listas:** una lista se construye de manera recursiva, donde el primer elemento almacena un valor y el segundo elemento representa el resto de la lista, por ejemplo, en una lista como [3,2,5,6] se dividiria en dos partes principales: X, conocido como el head, que representa el primer elemento de la lista, mientras que Y, conocido como tail, es todo lo que resta y se representa asi: [3 | [2,5,6]]
+Es gracias a esta estructura recursiva que las listas pueden utilizarse para representar estructuras mucho más complejas y son suficientes para realizar gran parte de los cálculos y manipulaciones de datos dentro de la programación lógica. Además, el libro también menciona que las listas necesitan una forma de terminar la recursión, por lo que se utiliza una lista vacía representada como [], la cual funciona como el caso final que indica que ya no existen más elementos dentro de la estructura.
+- **Recursión**: es cuando una función se llama a sí mismo para resolver un problema paso a paso, normalmente se divide en un caso base, que detiene la recursión, y un caso recursivo, que continúa el proceso utilizando una versión más pequeña del problema original. En este proyecto, la recursión se utiliza en el recorrido DFS para continuar explorando nodos hasta encontrar el destino.
+- **Backtracking**: es un mecanismo utilizado por Prolog para probar diferentes posibles soluciones automáticamente. Cuando Prolog intenta una opción y esta falla, el lenguaje retrocede al último punto válido y prueba una alternativa diferente, es gracias a esto que el programa puede explorar distintos caminos dentro del grafo hasta encontrar una ruta válida o determinar que no existe conexión entre los nodos indicados
 
+La implementación en Prolog comienza con el predicado principal **valid_path**, el cual recibe como parámetros la cantidad de nodos, la lista de conexiones del grafo, el nodo inicial y el nodo destino, se piden estas cuatro cosas porque viene directamente del input que tenía el problema de LeetCode. En este predicado es donde comienza el DFS llamando a **find_path** y también manda una lista vacía que es donde se van a registrar los nodos visitados durante la búsqueda.
 
-    
+**find_path** es la función que contiene la lógica principal del algoritmo DFS, aquí primero se verifica el caso base, donde el nodo actual y el nodo destino son iguales, si esto ocurre, significa que sí existe un camino válido y la búsqueda termina, y en caso de que no, el programa revisa que el nodo actual no haya sido visitado previamente para evitar ciclos infinitos, después **connected** busca nodos vecinos dentro de la lista de conexiones del grafo y debido a que el grafo es no dirigido, se revisan las conexiones en ambos sentidos y una vez encontrado un vecino válido, **find_path** se llama nuevamente de manera recursiva para continuar explorando el grafo desde ese nuevo nodo.
 
+Gracias a la recursión y al backtracking de Prolog, es que el programa puede probar diferentes caminos hasta encontrar una ruta válida entre los nodos indicados o determinar que la ruta no existe.
 
+De esta manera se elaboró la solución en Prolog y el código completo se encuentra en el archivo "find_path.pl".
 
 ## IMPLEMENTACIÓN
 
