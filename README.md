@@ -54,6 +54,11 @@ Una de las características principales de la solución funcional es el uso de r
 
 De esta manera se elaboró la solución en Racket y el código completo se encuentra en el archivo "find_path.rkt".
 
+**DIAGRAMA**
+
+<img width="2860" height="1428" alt="Screen Recording 2026-05-25 at 11 45 54 a m" src="https://github.com/user-attachments/assets/c4d4695c-103f-44f2-8815-86c7de38d8ab" />
+
+
 ### Logic - Prolog
 
 El paradigma lógico surgió a partir de investigaciones relacionadas con la demostración automática de teoremas. Inicialmente, los programas de demostración de teoremas eran muy lentos debido a que exploraban exhaustivamente todas las posibles pruebas, sin embargo, durante la década de 1960, gracias al desarrollo del algoritmo de unificación y el principio de resolución, este tipo de búsquedas lógicas se hiceron más eficientes.
