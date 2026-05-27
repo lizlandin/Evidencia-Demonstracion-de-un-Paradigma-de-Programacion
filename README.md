@@ -23,40 +23,51 @@ De esta manera, el problema no solo es útil para practicar algoritmos de búsqu
 
 ### Functional - Racket 
 
+El paradigma funcional tiene como objetivo aproximarse lo más posible al comportamiento de las funciones matemáticas. A diferencia de los lenguajes imperativos, donde el programa constantemente modifica variables y estados en memoria mediante asignaciones, la programación funcional busca minimizar este tipo de cambios y centrarse principalmente en la evaluación de funciones. En un lenguaje puramente funcional, las variables no se actualizan continuamente durante la ejecución del programa, sino que las funciones reciben datos de entrada y producen resultados sin alterar el estado general del sistema. En este paradigma, la repetición normalmente se implementa mediante recursión en lugar de ciclos iterativos, y una función debe producir siempre el mismo resultado cuando recibe los mismos parámetros, característica conocida como referential transparency.
+Este paradigma constituye una de las bases más importantes de los estilos de programación no imperativos y es un enfoque que ganó gran relevancia gracias a las ideas propuestas por John Backus en su conferencia del Premio Turing de 1977, donde argumentó que los lenguajes puramente funcionales podían producir programas más legibles, confiables y con mayores probabilidades de ser correctos en comparación con los lenguajes imperativos (Sebesta, 2012).
+
 Para poder resolver este problema es necesario recorrer los grafos que se van a proporcionan en el input para después explorar las conexiones entre sus nodos hasta determinar si existe un camino válido entre el nodo inicial y el nodo destino y para lograr esto voy a utilizar un algoritmo conocido como Depth-First Search (DFS) con listas de adyacencia.
 
 De acuerdo con el libro Introduction to Algorithms de Cormen et al. (2009), el algoritmo Depth-First Search (DFS) sigue una estrategia de exploración en profundidad, intentando avanzar lo más posible a través de un camino antes de regresar y explorar otras alternativas. El algoritmo revisa primero las conexiones de los nodos descubiertos más recientemente y, cuando ya no existen caminos nuevos por explorar, realiza un proceso de backtracking para regresar a nodos anteriores y continuar la búsqueda desde ellos. Este procedimiento se repite hasta recorrer todos los nodos alcanzables dentro del grafo. 
 
 Por otro lado la representación de un grafo (***G = (V E)***) mediante una lista de adyacencia consiste en un arreglo *Adj* de *|V|* listas, donde *V* representa el conjunto de vértices o nodos del grafo y cada posición del arreglo corresponde a un vértice específico *u ∈ V*. Para cada vértice *u*, la lista *Adj[u]* contiene todos los vértices *v* tales que existe una conexión o arista *(u,v) ∈ E*, donde *E* representa el conjunto de aristas o conexiones del grafo. 
 
-En otras palabras, cada lista almacena todos los vecinos de un nodo determinado, y en un grafo no dirigido, si existe una arista *(u,v)*, entonces el vértice *u* aparece en la lista de adyacencia de *v* y viceversa
+En otras palabras, cada lista almacena todos los vecinos de un nodo determinado, y en un grafo no dirigido, si existe una arista *(u,v)*, entonces el vértice *u* aparece en la lista de adyacencia de *v* y viceversa.
+
+Además de DFS y listas de adyacencia, la implementación utiliza hash tables para almacenar tanto el grafo como los nodos visitados durante el recorrido. Según Cormen et al. (2009), una hash table es una estructura de datos eficiente para implementar asociaciones entre claves y valores, donde el índice utilizado para acceder a la información se calcula a partir de una función hash. En esta solución, cada nodo del grafo funciona como una clave y el valor asociado corresponde a la lista de vecinos conectados a dicho nodo, lo cual nos permitirá acceder rápidamente a los vecinos de cada vértice durante la exploración realizada por DFS.
 
 La primera solución para este problema será implementada usando estos conceptos en el entorno de desarrollo DrRacket utilizando el lenguaje Racket, el cual es un lenguaje derivado de Scheme, que se caracteriza por trabajar bajo el paradigma funcional.
 
-El **paradigma funcional** tiene como objetivo aproximarse lo más posible al comportamiento de las funciones matemáticas, a diferencia de los lenguajes imperativos, donde el programa constantemente modifica variables y estados en memoria mediante asignaciones, la programación funcional busca minimizar este tipo de cambios y centrarse principalmente en la evaluación de funciones. En un lenguaje puramente funcional, las variables no se actualizan continuamente durante la ejecución del programa, sino que las funciones reciben datos de entrada y producen resultados sin alterar el estado general del sistema. En este paradigma, la repetición normalmente se implementa mediante recursión en lugar de ciclos iterativos, y una función debe producir siempre el mismo resultado cuando recibe los mismos parámetros, característica conocida como **referential transparency**. 
-Este paradigma constituye una de las bases más importantes de los estilos de programación no imperativos y es un enfoque ganó gran relevancia gracias a las ideas propuestas por John Backus en su conferencia del Premio Turing de 1977, donde argumentó que los lenguajes puramente funcionales podían producir programas más legibles, confiables y con mayores probabilidades de ser correctos en comparación con los lenguajes imperativos (Sebesta, 2012).
+El código en Racket se desarrolló utilizando varias funciones pequeñas que se encargan de tareas específicas dentro del recorrido DFS. Para representar el grafo se utilizó una estructura conocida como lista de adyacencia, explicada anteriormente, donde cada nodo almacena directamente una lista con sus vecinos o nodos conectados y en esta implementación, dichas listas de adyacencia se almacenan mediante hash tables, donde cada nodo funciona como una clave y el valor asociado corresponde a la lista de vecinos conectados a dicho nodo.
 
-La solución en Racket se desarrolló utilizando varias funciones pequeñas que se encargan de tareas específicas dentro del recorrido DFS. Para representar el grafo se utilizó una estructura conocida como lista de adyacencia,la cual se explico anteriormente, donde cada nodo almacena directamente una lista con sus vecinos o nodos conectados lo cual nos permite acceder a las conexiones del grafo de manera más eficiente durante la búsqueda.
+La función principal, **valid-path**, recibe los parámetros proporcionados por LeetCode los cuales son el número de nodos, la lista de conexiones, el nodo inicial y el nodo destino. Dentro de esta función se construye el grafo utilizando la función **build-graph**, la cual recorre todas las conexiones que se dieron en el input para generar el grafo completo.
 
-La función principal, **valid-path**, recibe los parámetros proporcionados por LeetCode: el número de nodos, la lista de conexiones, el nodo inicial y el nodo destino y dentro de esta función se crea un vector llamado graph, donde cada posición representa un nodo del grafo y contiene una lista con sus vecinos.
+Para construir la lista de adyacencia se utiliza la función **add-edge**, la cual recibe una conexión entre dos nodos y la agrega dentro de la hash table del grafo y debido a que el problema trabaja con un grafo no dirigido, cada conexión se almacena en ambos sentidos, eso quiere decir que si existe una conexión entre los nodos *u* y *v*, entonces *v* aparece como vecino de *u* y *u* aparece como vecino de *v*. La función **add-neighbor** se encarga específicamente de agregar vecinos a cada nodo sin modificar el estado original de la estructura, lo cual mantiene un enfoque alineado con la programación funcional pura donde las variables no se actualizan continuamente durante la ejecución del programa.
 
-Para construir la lista de adyacencia se utiliza la función **add-edge**, la cual recibe una conexión entre dos nodos y la agrega dentro del vector del grafo, debido a que el problema trabaja con un grafo no dirigido, cada conexión se almacena en ambos sentidos, eso quiere decir que si existe una conexión entre los nodos u y v, entonces v aparece como vecino de u y u aparece como vecino de v.
+Una vez construido el grafo, la función **find-path** implementa la lógica principal del algoritmo DFS de manera recursiva. Esta función revisa si el nodo actual corresponde al destino, si ya fue visitado anteriormente o si debe continuar explorando sus vecinos. Para registrar los nodos que ya fueron visitados se utiliza otra hash table llamada **visited**, la cual evita ciclos infinitos durante el recorrido.
 
-Una vez construido el grafo, el programa crea un vector llamado visited, el cual se utiliza para registrar los nodos que ya fueron visitados durante el recorrido y evitar ciclos infinitos,posteriormente, la función **find-path** implementa la lógica principal del algoritmo DFS de manera recursiva, esta función revisa si el nodo actual corresponde al destino, si ya fue visitado anteriormente o si debe continuar explorando sus vecinos.
+La función **check-neighbors** es la encargada de revisar recursivamente la lista de vecinos del nodo actual, donde si alguno de ellos logra llegar al destino, la función regresa #true y en caso contrario, continúa explorando el resto de vecinos hasta haber revisado todos los caminos posibles.
 
-La función **check-neighbors** es la que se encarga de revisar recursivamente la lista de vecinos del nodo actual, si alguno de ellos logra llegar al destino, la función regresa #true y en caso de que no continúa explorando el resto de vecinos hasta haber revisado todos.
+Dentro de la implementación también se utilizaron funciones características de Racket como first, rest, cons y cond.
+**-first:**- obtiene el primer elemento de una lista.
+**-rest:**- obtiene el resto de la lista excluyendo el primer elemento.
+**-cons:**- agrega un elemento al inicio de una lista.
+**-cond:**- permite evaluar múltiples casos dentro del algoritmo, es como el equivalente de if / if else.
 
-Dentro de la implementación también utilicé funciones características de Racket como **first, rest, cons y cond** y algunas nuevas que no vi directamente en clase como **make-vector, vector-ref, vector-set!, for-each** pero que se utilizaban para realizar la solución con una menor complejidad y así fuera aceptada por LeetCode.
+Así mismo, se utilizaron funciones relacionadas con hash tables como hash, hash-ref, hash-set y hash-has-key?, las cuales, aunque no se vieron  durante la clase, tuve que investigarlas para poder realizar una implementación que fuera más eficiente mientras mantenia un estilo de programación funcional pura, lo cual no logré con las funciones de vectores.
 
-Los vectores son los que permitieron almacenar de manera eficiente tanto la lista de adyacencia como los nodos visitados, mientras que funciones como first, rest, cons facilitaron el manejo de listas dentro del programa y cond es lo que permitio evaluar diferentes casos dentro del algoritmo, como el equivalente de if de los lenguajes imperativos que normalmente usamos.
+**-hash:** crea una hash table vacía o con valores iniciales.
+**-hash-ref:** obtiene el valor asociado a una clave dentro de la hash table.
+**-hash-set:** crea una nueva versión de la hash table con un valor agregado o actualizado sin modificar la original.
+**-hash-has-key?:** verifica si una clave existe dentro de la hash table.
 
-Una de las características principales de la solución funcional es el uso de recursión en lugar de ciclos iterativos, por lo que la exploración del grafo se realiza mediante llamadas recursivas hasta encontrar el destino o determinar que no existe un camino válido entre los nodos indicados.
+Como se menciono anteriormente, una de las características principales de la solución funcional es el uso de recursión en lugar de ciclos iterativos, lo cual podemos observar en la exploración del grafo, la cual se realiza mediante llamadas recursivas hasta encontrar el destino o determinar que no existe un camino válido entre los nodos indicados, además, la implementación evita modificar directamente las estructuras principales del programa, ya que hash-set genera nuevas versiones actualizadas de las hash tables en lugar de alterar las originales, manteniendo así el estilo funcional que busca minimizar ese tipo de cambios.
 
 De esta manera se elaboró la solución en Racket y el código completo se encuentra en el archivo "find_path.rkt".
 
 **DIAGRAMA**
 
-<img width="2860" height="1428" alt="Screen Recording 2026-05-25 at 11 45 54 a m" src="https://github.com/user-attachments/assets/c4d4695c-103f-44f2-8815-86c7de38d8ab" />
+<img width="2860" height="image" alt="Screen Recording 2026-05-25 at 11 45 54 a m" src="https://github.com/user-attachments/assets/c4d4695c-103f-44f2-8815-86c7de38d8ab" />
 
 
 ### Logic - Prolog
@@ -176,6 +187,5 @@ La complejidad espacial es ***O(V)***, ya que el programa solo va a almacenar la
 - Sebesta, R. W. (2012). Concepts of programming languages (10th ed.). Pearson.
 - Abelson, H., & Sussman, G. J. (1996). Structure and Interpretation of Computer Programs (2nd ed.). MIT Press.
 - Sterling, L., & Shapiro, E. (1994). The Art of Prolog: Advanced Programming Techniques (2nd ed.). MIT Press.
-- 4.12 vectors. (n.d.). https://docs.racket-lang.org/reference/vectors.html
-
+- 4.15 hash tables. (n.d.). https://docs.racket-lang.org/reference/hashtables.html
 
