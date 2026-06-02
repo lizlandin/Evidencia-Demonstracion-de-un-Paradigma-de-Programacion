@@ -67,6 +67,41 @@ De esta manera se elaboró la solución en Racket y el código completo se encue
 
 **DIAGRAMA**
 
+Debido a que la solución implementada trabaja con grafos y utiliza el algoritmo DFS (Depth First Search) para determinar si existe un camino entre dos nodos, el diagrama únicamente permitiría observar el flujo de ejecución del programa, pero no mostraría de manera visual el cómo se recorren los nodos, ni cómo se determina si existe un camino dentro del grafo.
+
+Por esta razón el "diagrama" será diferente, donde se utilizarán dos grafos de ejemplo para mostrar el funcionamiento de la solución. 
+
+- El primer grafo es uno conectado, donde existe al menos un camino entre el nodo origen y el nodo destino. 
+- El segundo corresponde a un grafo desconectado, donde los nodos origen y destino pertenecen a componentes diferentes y, por lo tanto, no existe un camino válido entre ellos.
+
+Mediante estos ejemplos se mostrará paso a paso cómo el algoritmo DFS explora los nodos vecinos, registra los nodos visitados para evitar ciclos y determina finalmente si existe o no una ruta entre el nodo de origen y el nodo destino.
+
+
+**- Grafo Conectado**
+
+Input:
+
+(displayln
+ (valid-path
+  6
+  '((0 1)
+    (0 2)
+    (3 5)
+    (5 4)
+    (4 3))
+  0
+  5))
+
+1. Se llama a valid-path (valid-path 5 edges 0 3). Los parámetros son: n=5 nodos, source=0, destination=3. Lo primero que hace es construir el grafo llamando a build-graph.
+
+<img width="250" height="image" alt="image" src="https://github.com/user-attachments/assets/86cf66be-e31d-4c26-9693-0a8884328b37" />
+
+
+**- Grafo Desconectado** 
+<img width="600" height="image" alt="image" src="https://github.com/user-attachments/assets/dc90796a-a751-4dda-b71e-622192ce2833" />
+
+
+
 <img width="2860" height="image" alt="Screen Recording 2026-05-25 at 11 45 54 a m" src="https://github.com/user-attachments/assets/c4d4695c-103f-44f2-8815-86c7de38d8ab" />
 
 
