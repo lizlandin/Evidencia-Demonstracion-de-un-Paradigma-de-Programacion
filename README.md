@@ -107,6 +107,11 @@ Gracias a la recursión y al backtracking de Prolog, es que el programa puede pr
 
 De esta manera se elaboró la solución en Prolog y el código completo se encuentra en el archivo "find_path.pl".
 
+
+**DIAGRAMA**
+
+
+
 ## IMPLEMENTACIÓN
 
 **Implementación en Racket - Paradigma Funcional**
