@@ -49,17 +49,17 @@ Una vez construido el grafo, la función **find-path** implementa la lógica pri
 La función **check-neighbors** es la encargada de revisar recursivamente la lista de vecinos del nodo actual, donde si alguno de ellos logra llegar al destino, la función regresa #true y en caso contrario, continúa explorando el resto de vecinos hasta haber revisado todos los caminos posibles.
 
 Dentro de la implementación también se utilizaron funciones características de Racket como first, rest, cons y cond.
-**-first:**- obtiene el primer elemento de una lista.
-**-rest:**- obtiene el resto de la lista excluyendo el primer elemento.
-**-cons:**- agrega un elemento al inicio de una lista.
-**-cond:**- permite evaluar múltiples casos dentro del algoritmo, es como el equivalente de if / if else.
+- **first:** obtiene el primer elemento de una lista.
+- **rest:** obtiene el resto de la lista excluyendo el primer elemento.
+- **cons:** agrega un elemento al inicio de una lista.
+- **cond:** permite evaluar múltiples casos dentro del algoritmo, es como el equivalente de if / if else.
 
 Así mismo, se utilizaron funciones relacionadas con hash tables como hash, hash-ref, hash-set y hash-has-key?, las cuales, aunque no se vieron  durante la clase, tuve que investigarlas para poder realizar una implementación que fuera más eficiente mientras mantenia un estilo de programación funcional pura, lo cual no logré con las funciones de vectores.
 
-**-hash:** crea una hash table vacía o con valores iniciales.
-**-hash-ref:** obtiene el valor asociado a una clave dentro de la hash table.
-**-hash-set:** crea una nueva versión de la hash table con un valor agregado o actualizado sin modificar la original.
-**-hash-has-key?:** verifica si una clave existe dentro de la hash table.
+- **hash:** crea una hash table vacía o con valores iniciales.
+- **hash-ref:** obtiene el valor asociado a una clave dentro de la hash table.
+- **hash-set:** crea una nueva versión de la hash table con un valor agregado o actualizado sin modificar la original.
+- **hash-has-key?:** verifica si una clave existe dentro de la hash table.
 
 Como se menciono anteriormente, una de las características principales de la solución funcional es el uso de recursión en lugar de ciclos iterativos, lo cual podemos observar en la exploración del grafo, la cual se realiza mediante llamadas recursivas hasta encontrar el destino o determinar que no existe un camino válido entre los nodos indicados, además, la implementación evita modificar directamente las estructuras principales del programa, ya que hash-set genera nuevas versiones actualizadas de las hash tables en lugar de alterar las originales, manteniendo así el estilo funcional que busca minimizar ese tipo de cambios.
 
@@ -81,18 +81,13 @@ Mediante estos ejemplos se mostrará paso a paso cómo el algoritmo DFS explora 
 
 Input:
 
-(displayln
- (valid-path
-  6
-  '((0 1)
-    (0 2)
-    (3 5)
-    (5 4)
-    (4 3))
-  0
-  5))
+<img width="200" height="images" alt="image" src="https://github.com/user-attachments/assets/3ff3119f-e32b-4652-82a9-0c2a988c5503" />
 
-1. Se llama a valid-path (valid-path 5 edges 0 3). Los parámetros son: n=5 nodos, source=0, destination=3. Lo primero que hace es construir el grafo llamando a build-graph.
+
+1. Se llama a valid-path, la función principal para iniciar.
+(valid-path 5 edges 0 3), los parámetros son: n=5 nodos, source=0, destination=3. Lo primero que hace es construir el grafo llamando a build-graph.
+2. build-graph construye la lista de adyacencia.
+Recorre cada arista del input y llama a add-edge que a su vez llama a add-neighbor dos veces (grafo bidireccional). El resultado es un hash donde cada nodo apunta a su lista de vecinos:
 
 <img width="250" height="image" alt="image" src="https://github.com/user-attachments/assets/86cf66be-e31d-4c26-9693-0a8884328b37" />
 
