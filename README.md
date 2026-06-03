@@ -73,7 +73,7 @@ Por esta razón el "diagrama" será diferente, donde se utilizara un grafos de e
 
 Mediante este ejemplo se mostrará paso a paso cómo el algoritmo DFS explora los nodos vecinos, registra los nodos visitados para evitar ciclos y determina finalmente si existe o no una ruta entre el nodo de origen y el nodo destino.
 
-<img width="1528" height="4581" alt="IMG_2489" src="https://github.com/user-attachments/assets/0d31a800-1881-4425-be26-332d9df967de" />
+<img width="1528" height="4560" alt="IMG_2490" src="https://github.com/user-attachments/assets/5fdc960f-dcac-4893-9fec-bc9a70c88e02" />
 
 
 ### Logic - Prolog
@@ -109,7 +109,7 @@ De esta manera se elaboró la solución en Prolog y el código completo se encue
 
 
 **DIAGRAMA**
-
+<img width="1998" height="4534" alt="IMG_2491" src="https://github.com/user-attachments/assets/6b2ae7fd-a26f-4bff-b907-ff0dcbbfdeac"/>
 
 
 ## IMPLEMENTACIÓN
