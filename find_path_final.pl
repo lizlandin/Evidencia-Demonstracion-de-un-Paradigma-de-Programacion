@@ -1,6 +1,6 @@
 % Pruebas
 
-:- consult('find_path_final.pl').
+:- consult('find_path.pl').
 
 run_path_tests :-
 
