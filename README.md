@@ -163,7 +163,7 @@ Por esto, se decidió conservar una implementación más cercana conceptualmente
 
 Estos son los caminos que probaremos en el archivo "find_path_tests.pl" :
 
-<img width="700" height="image" alt="image" src="https://github.com/user-attachments/assets/74321a6e-48e0-4202-ab6a-6b50b64dadd5" />
+<img width="750" height="image" alt="image" src="https://github.com/user-attachments/assets/8a995c67-9ece-40c0-817e-b487a23906c1" />
 
 
 ## ANÁLISIS
