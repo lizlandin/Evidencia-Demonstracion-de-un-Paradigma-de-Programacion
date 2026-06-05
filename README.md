@@ -109,6 +109,7 @@ De esta manera se elaboró la solución en Prolog y el código completo se encue
 
 
 **DIAGRAMA**
+
 <img width="1998" height="4534" alt="IMG_2491" src="https://github.com/user-attachments/assets/6b2ae7fd-a26f-4bff-b907-ff0dcbbfdeac"/>
 
 
